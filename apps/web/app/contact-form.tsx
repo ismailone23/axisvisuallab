@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import styles from "./page.module.css";
 
-type FormStatus = "idle" | "sending" | "success" | "error";
+type FormStatus = "idle" | "sending" | "success" | "error" | "rate-limited";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
@@ -21,6 +21,10 @@ export default function ContactForm() {
         body: JSON.stringify(Object.fromEntries(fields)),
       });
 
+      if (response.status === 429) {
+        setStatus("rate-limited");
+        return;
+      }
       if (!response.ok) throw new Error("Could not send message");
       form.reset();
       setStatus("success");
@@ -30,15 +34,33 @@ export default function ContactForm() {
   }
 
   return (
-    <form className={styles.contactForm} id="contact-form" onSubmit={handleSubmit}>
+    <form
+      className={styles.contactForm}
+      id="contact-form"
+      onSubmit={handleSubmit}
+    >
       <div className={styles.formPair}>
         <label className={styles.formField}>
           <span>Your name *</span>
-          <input name="name" type="text" autoComplete="name" placeholder="How should we call you?" required maxLength={100} />
+          <input
+            name="name"
+            type="text"
+            autoComplete="name"
+            placeholder="How should we call you?"
+            required
+            maxLength={100}
+          />
         </label>
         <label className={styles.formField}>
           <span>Email address *</span>
-          <input name="email" type="email" autoComplete="email" placeholder="you@example.com" required maxLength={254} />
+          <input
+            name="email"
+            type="email"
+            autoComplete="email"
+            placeholder="you@example.com"
+            required
+            maxLength={254}
+          />
         </label>
       </div>
       <label className={styles.formField}>
@@ -53,18 +75,44 @@ export default function ContactForm() {
       </label>
       <label className={styles.formField}>
         <span>Tell us about your project *</span>
-        <textarea name="message" placeholder="A little about your idea, timeline, or what you have in mind..." required minLength={10} maxLength={5000} rows={5} />
+        <textarea
+          name="message"
+          placeholder="A little about your idea, timeline, or what you have in mind..."
+          required
+          minLength={10}
+          maxLength={5000}
+          rows={5}
+        />
       </label>
       <div className={styles.honeypot} aria-hidden="true">
-        <label>Leave this field empty<input name="companyWebsite" type="text" tabIndex={-1} autoComplete="off" /></label>
+        <label>
+          Leave this field empty
+          <input
+            name="companyWebsite"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </label>
       </div>
       <div className={styles.formEnd}>
         <button type="submit" disabled={status === "sending"}>
-          {status === "sending" ? "Sending..." : "Send your message"} <span aria-hidden="true">↗</span>
+          {status === "sending" ? "Sending..." : "Send your message"}{" "}
+          <span aria-hidden="true">↗</span>
         </button>
-        <p className={styles.formStatus} role={status === "error" ? "alert" : "status"} aria-live="polite">
-          {status === "success" && "Thanks for reaching out. We’ll get back to you soon."}
-          {status === "error" && "Your message couldn’t be sent. Please try again or email us directly."}
+        <p
+          className={styles.formStatus}
+          role={
+            status === "error" || status === "rate-limited" ? "alert" : "status"
+          }
+          aria-live="polite"
+        >
+          {status === "success" &&
+            "Thanks for reaching out. We’ll get back to you soon."}
+          {status === "error" &&
+            "Your message couldn’t be sent. Please try again or email us directly."}
+          {status === "rate-limited" &&
+            "Too many messages for now. Please try again later or email us directly."}
         </p>
       </div>
     </form>

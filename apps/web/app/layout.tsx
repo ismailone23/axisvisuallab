@@ -14,10 +14,10 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Axis Visual Lab | Websites, Apps, Video & Graphic Design",
+  title: "Gryffindor Lab | Websites, Apps, Video & Graphic Design",
   description: siteDescription,
   keywords: [
-    "Axis Visual Lab",
+    "Gryffindor Lab",
     "website development",
     "web design",
     "app development",
@@ -27,16 +27,16 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Axis Visual Lab | Creative & Tech Studio",
+    title: "Gryffindor Lab | Creative & Tech Studio",
     description: siteDescription,
     url: "/",
-    siteName: "Axis Visual Lab",
+    siteName: "Gryffindor Lab",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Axis Visual Lab | Creative & Tech Studio",
+    title: "Gryffindor Lab | Creative & Tech Studio",
     description: siteDescription,
     images: ["/opengraph-image"],
   },
@@ -46,9 +46,9 @@ export const metadata: Metadata = {
 const organization = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Axis Visual Lab",
+  name: "Gryffindor Lab",
   url: siteUrl,
-  email: "info@axisvisuallab.com",
+  email: "info@gryffindorlab.com",
   description: siteDescription,
 };
 
@@ -58,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
         <script

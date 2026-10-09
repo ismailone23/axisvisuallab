@@ -1,5 +1,18 @@
 .page {
   overflow: hidden;
+  background:
+    radial-gradient(circle, #f2f0e92b 0.8px, transparent 1.3px) 0 0 / 12px 12px,
+    radial-gradient(
+      ellipse 800px 580px at 82% 520px,
+      #fc674922,
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 600px 460px at 6% 920px,
+      #f2f0e90a,
+      transparent 75%
+    ),
+    var(--ink);
 }
 .header {
   height: 92px;
@@ -7,7 +20,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #ffffff22;
 }
 .brand,
 .footerBrand {
@@ -31,9 +43,9 @@
   border-radius: 50%;
 }
 .brandName {
-  font-size: 29px;
-  letter-spacing: -0.085em;
-  line-height: 0.72;
+  font-size: 22px;
+  letter-spacing: -0.065em;
+  line-height: 0.9;
   font-weight: 800;
 }
 .brandDot,
@@ -51,15 +63,21 @@
 .nav {
   display: flex;
   align-items: center;
-  gap: clamp(24px, 3.5vw, 58px);
+  gap: clamp(8px, 1.2vw, 18px);
   font-size: 13px;
   font-weight: 600;
 }
 .nav > a:not(.navContact) {
-  transition: color 0.2s;
+  min-height: 43px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 40px;
+  background: #f2f0e914;
+  transition: background 0.2s, color 0.2s;
 }
 .nav > a:not(.navContact):hover {
-  color: var(--orange);
+  background: #f2f0e929;
 }
 .navContact {
   min-height: 43px;
@@ -67,8 +85,9 @@
   display: inline-flex;
   align-items: center;
   gap: 23px;
-  border: 1px solid #ffffff67;
   border-radius: 40px;
+  background: var(--orange);
+  color: var(--ink);
   transition:
     background 0.2s,
     color 0.2s;
@@ -254,6 +273,21 @@
   top: -12%;
   left: 27%;
   transform: rotate(29deg);
+}
+.artRibbonBack,
+.artRibbonFront {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.artRibbonBack {
+  z-index: 0;
+}
+.artRibbonFront {
+  z-index: 2;
+  filter: drop-shadow(9px 12px 11px #47202b80);
 }
 .artOrb {
   position: absolute;
@@ -564,7 +598,9 @@
 }
 .services {
   padding: 63px clamp(24px, 5.4vw, 100px) 130px;
-  background: #252822;
+  background:
+    radial-gradient(circle, #f2f0e91c 0.8px, transparent 1.3px) 0 0 / 13px 13px,
+    #252822;
 }
 .services .sectionTop {
   color: #d5d5cd;
@@ -837,13 +873,13 @@
 .footerBrand {
   color: var(--paper);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-  font-size: 32px;
+  font-size: 23px;
   font-weight: 800;
-  letter-spacing: -0.085em;
-  line-height: 0.7;
+  letter-spacing: -0.065em;
+  line-height: 0.9;
   gap: 0;
   flex-wrap: wrap;
-  width: 75px;
+  width: 145px;
 }
 .footerBrand small {
   flex-basis: 100%;
@@ -985,7 +1021,7 @@
 }
 @media (max-width: 540px) {
   .brandName {
-    font-size: 25px;
+    font-size: 18px;
   }
   .brandMark {
     width: 23px;

@@ -1,5 +1,5 @@
 {
-  "name": "axisvisuallab",
+  "name": "gryffindorlab",
   "private": true,
   "scripts": {
     "build": "turbo run build",

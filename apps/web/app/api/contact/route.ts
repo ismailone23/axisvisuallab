@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { checkMessageLimit } from "./rate-limit";
 
 export const runtime = "nodejs";
 
@@ -43,13 +44,26 @@ export async function POST(request: Request) {
     return Response.json({ error: "Contact form is not configured." }, { status: 503 });
   }
 
+  const client = (
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    request.headers.get("x-real-ip") ||
+    "unknown"
+  ).slice(0, 64);
+  const limit = checkMessageLimit(client);
+  if (!limit.allowed) {
+    return Response.json(
+      { error: "Too many messages. Please try again later." },
+      { status: 429, headers: { "Retry-After": String(limit.retryAfter) } },
+    );
+  }
+
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
     const { error } = await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL || "Axis Visual Lab <contact@axisvisuallab.com>",
+      from: process.env.RESEND_FROM_EMAIL || "Gryffindor Lab <info@gryffindorlab.com>",
       to: process.env.CONTACT_EMAIL,
       replyTo: email,
-      subject: "New enquiry from Axis Visual Lab website",
+      subject: "New enquiry from Gryffindor Lab website",
       text: `Name: ${name}\nEmail: ${email}\nService: ${service || "Not specified"}\n\nMessage:\n${message}`,
     });
 

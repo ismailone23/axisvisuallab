@@ -53,7 +53,7 @@ export default function Home() {
         <a
           className={styles.brand}
           href="#top"
-          aria-label="Axis Visual Lab, back to top"
+          aria-label="Gryffindor Lab, back to top"
         >
           <span className={styles.brandMark} aria-hidden="true">
             <span />
@@ -62,8 +62,8 @@ export default function Home() {
             <span />
           </span>
           <span className={styles.brandName}>
-            axis<span className={styles.brandDot}>.</span>
-            <small>VISUAL LAB</small>
+            gryffindor<span className={styles.brandDot}>.</span>
+            <small>LAB</small>
           </span>
         </a>
         <nav className={styles.nav} aria-label="Main navigation">
@@ -107,13 +107,62 @@ export default function Home() {
             </div>
             <div className={styles.heroArt} aria-hidden="true">
               <div className={styles.artTop}>
-                <span>AXIS / 001</span>
+                <span>GRYFFINDOR / 001</span>
                 <span>VISUAL THINKING ↗</span>
               </div>
               <div className={styles.artGrid} />
               <div className={`${styles.artOrbit} ${styles.artOrbitOne}`} />
               <div className={`${styles.artOrbit} ${styles.artOrbitTwo}`} />
+              <svg
+                className={styles.artRibbonBack}
+                viewBox="0 0 600 600"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M-65 425 C70 250 170 250 285 295 C420 350 480 155 665 165"
+                  fill="none"
+                  stroke="#812c38"
+                  strokeWidth="44"
+                />
+                <path
+                  d="M-65 419 C70 244 170 244 285 289 C420 344 480 149 665 159"
+                  fill="none"
+                  stroke="#ffbd77"
+                  strokeWidth="34"
+                />
+              </svg>
               <div className={styles.artOrb} />
+              <svg
+                className={styles.artRibbonFront}
+                viewBox="0 0 600 600"
+                preserveAspectRatio="none"
+              >
+                <defs>
+                  <linearGradient id="ribbon" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stopColor="#ffe2a1" />
+                    <stop offset="0.45" stopColor="#ffbb6a" />
+                    <stop offset="1" stopColor="#fa8256" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M-50 392 C58 476 132 324 237 319 C368 311 426 472 646 300"
+                  fill="none"
+                  stroke="#9a3b3e"
+                  strokeWidth="45"
+                />
+                <path
+                  d="M-50 386 C58 470 132 318 237 313 C368 305 426 466 646 294"
+                  fill="none"
+                  stroke="url(#ribbon)"
+                  strokeWidth="35"
+                />
+                <path
+                  d="M-50 374 C58 458 132 306 237 301 C368 293 426 454 646 282"
+                  fill="none"
+                  stroke="#ffe6ac88"
+                  strokeWidth="3"
+                />
+              </svg>
               <div className={styles.artCross}>+</div>
               <div className={styles.artBottom}>
                 <span>
@@ -199,7 +248,7 @@ export default function Home() {
               >
                 <div className={styles.digitalWindow}>
                   <div className={styles.windowHeader}>
-                    <span>axis / digital</span>
+                    <span>gryffindor / digital</span>
                     <span>✳ &nbsp; ◯ &nbsp; ↗</span>
                   </div>
                   <div className={styles.windowBody}>
@@ -226,7 +275,7 @@ export default function Home() {
             </article>
           </div>
           <p className={styles.showcaseNote}>
-            A glimpse into our creative world — concept visuals by Axis Visual
+            A glimpse into our creative world — concept visuals by Gryffindor
             Lab.
           </p>
         </section>
@@ -247,7 +296,7 @@ export default function Home() {
               <span>Clear direction.</span>
             </h2>
             <p>
-              Axis Visual Lab is a creative and tech studio for the ideas you
+              Gryffindor Lab is a creative and tech studio for the ideas you
               want to put into the world. We build websites and apps, edit
               videos, and design graphics with care from start to finish.
             </p>
@@ -303,9 +352,9 @@ export default function Home() {
               <p>Prefer email? Write to us directly.</p>
               <a
                 className={styles.emailLink}
-                href="mailto:info@axisvisuallab.com"
+                href="mailto:info@gryffindorlab.com"
               >
-                info@axisvisuallab.com <ArrowIcon diagonal />
+                info@gryffindorlab.com <ArrowIcon diagonal />
               </a>
             </div>
             <ContactForm />
@@ -315,12 +364,12 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <a className={styles.footerBrand} href="#top">
-          axis<span>.</span>
-          <small>VISUAL LAB</small>
+          gryffindor<span>.</span>
+          <small>LAB</small>
         </a>
         <span>INDEPENDENT BY DESIGN.</span>
         <div>
-          <span>© {new Date().getFullYear()} AXIS VISUAL LAB</span>
+          <span>© {new Date().getFullYear()} GRYFFINDOR LAB</span>
           <a href="#top">BACK TO TOP ↑</a>
         </div>
       </footer>
