@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/create-next-app).
+# Axis Visual Lab website
 
-## Getting Started
+The landing page, contact form, and SEO routes live in this Next.js app.
 
-First, run the development server:
+## Run locally
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+From the repository root, run `pnpm --filter web dev` and open http://localhost:3000.
+
+## Contact form
+
+Create `apps/web/.env.local` for local development, and set the same values in your hosting provider's environment settings for production:
+
+```env
+RESEND_API_KEY=your_resend_api_key
+CONTACT_EMAIL=your-private-inbox@example.com
+RESEND_FROM_EMAIL=Axis Visual Lab <contact@axisvisuallab.com>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`CONTACT_EMAIL` must be an inbox you can actually access (for example, your private mailbox or a working `info@axisvisuallab.com` inbox). The form requires both `CONTACT_EMAIL` and `RESEND_API_KEY`. `RESEND_FROM_EMAIL` is optional; its default is `Axis Visual Lab <contact@axisvisuallab.com>`. The sender domain must be verified for sending in Resend. Visitors' addresses are set as the reply-to address so you can reply from your inbox.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Verifying a domain for sending with Resend does not create a mailbox. If `info@axisvisuallab.com` is hosted by an existing email provider, keep that provider's MX records for receiving mail. The contact form sends a normal email through Resend to the inbox specified by `CONTACT_EMAIL`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load Inter, a custom Google Font.
+## Site URL
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The canonical URL and sitemap default to `https://axisvisuallab.com`. If the public website uses another URL, set `SITE_URL` in the hosting environment before building.
