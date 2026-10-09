@@ -16,6 +16,15 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Axis Visual Lab | Websites, Apps, Video & Graphic Design",
   description: siteDescription,
+  keywords: [
+    "Axis Visual Lab",
+    "website development",
+    "web design",
+    "app development",
+    "custom tech solutions",
+    "video editing",
+    "graphic design",
+  ],
   alternates: { canonical: "/" },
   openGraph: {
     title: "Axis Visual Lab | Creative & Tech Studio",
@@ -54,7 +63,9 @@ export default function RootLayout({
         {children}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organization).replace(/</g, "\\u003c") }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organization).replace(/</g, "\\u003c"),
+          }}
         />
       </body>
     </html>
