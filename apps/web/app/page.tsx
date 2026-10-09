@@ -1,4 +1,5 @@
 import ContactForm from "./contact-form";
+import ShaderBackground from "./shader-background";
 import styles from "./page.module.css";
 
 function ArrowIcon({ diagonal = false }: { diagonal?: boolean }) {
@@ -77,6 +78,7 @@ export default function Home() {
 
       <main>
         <section className={styles.hero} aria-labelledby="hero-title">
+          <ShaderBackground className={styles.heroShader} />
           <div className={styles.heroInner}>
             <div className={styles.heroContent}>
               <p className={styles.eyebrow}>

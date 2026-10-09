@@ -15,6 +15,8 @@
     var(--ink);
 }
 .header {
+  position: relative;
+  z-index: 1;
   height: 92px;
   padding: 0 clamp(24px, 5.4vw, 100px);
   display: flex;
@@ -101,9 +103,20 @@
   height: 16px;
 }
 .hero {
+  position: relative;
+  background: #0e0e10;
   padding: 0 clamp(24px, 5.4vw, 100px);
 }
+.heroShader {
+  position: absolute;
+  inset: -92px 0 0;
+  display: block;
+  width: 100%;
+  height: calc(100% + 92px);
+  pointer-events: none;
+}
 .heroInner {
+  position: relative;
   min-height: min(760px, 74vw);
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
@@ -321,6 +334,7 @@
   color: #fff4dfb0;
 }
 .heroFoot {
+  position: relative;
   display: flex;
   justify-content: space-between;
   padding: 18px 0 26px;
@@ -917,6 +931,10 @@
 @media (max-width: 760px) {
   .header {
     height: 78px;
+  }
+  .heroShader {
+    top: -78px;
+    height: calc(100% + 78px);
   }
   .nav {
     gap: 15px;
