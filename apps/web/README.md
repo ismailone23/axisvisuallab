@@ -22,4 +22,4 @@ Verifying a domain for sending with Resend does not create a mailbox. If `info@a
 
 ## Site URL
 
-The canonical URL and sitemap default to `https://axisvisuallab.com`. If the public website uses another URL, set `SITE_URL` in the hosting environment before building.
+The canonical URL and sitemap default to `https://www.axisvisuallab.com`. If the public website uses another URL, set `SITE_URL` in the hosting environment before building.
