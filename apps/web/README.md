@@ -24,4 +24,4 @@ The contact endpoint allows three validated submissions per IP address every 15 
 
 ## Site URL
 
-The canonical URL and sitemap default to `https://gryffindorlab.com`. If the public website uses another URL, set `SITE_URL` in the hosting environment before building.
+The canonical URL and sitemap use `https://www.gryffindorlab.com/`, the primary domain configured in hosting. The apex domain redirects there. If `SITE_URL` is set in the hosting environment, set it to `https://www.gryffindorlab.com` too; it overrides this default at build time. After deployment, submit `https://www.gryffindorlab.com/sitemap.xml` in Google Search Console.
